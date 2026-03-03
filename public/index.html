@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFC Terminal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round">
+          <path d="M12 2a10 10 0 0 1 0 20"/>
+          <path d="M12 6a6 6 0 0 1 0 12"/>
+          <path d="M12 10a2 2 0 0 1 0 4"/>
+        </svg>
+      </div>
+      <div class="logo-text">NFC <span>Terminal</span></div>
+    </div>
+    <div id="ws-status">
+      <div class="dot"></div>
+      <span id="ws-label">Desconectado</span>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-k">Tags leídos</div>
+        <div class="stat-v accent" id="stat-total">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-k">Enviados</div>
+        <div class="stat-v success" id="stat-sent">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-k">Errores</div>
+        <div class="stat-v warn" id="stat-errors">0</div>
+      </div>
+    </div>
+
+    <!-- SCAN PANEL -->
+    <div class="scan-panel">
+      <div class="nfc-ring-container" id="nfc-visual">
+        <div class="nfc-ring nfc-ring-1"></div>
+        <div class="nfc-ring nfc-ring-2"></div>
+        <div class="nfc-ring nfc-ring-3"></div>
+        <div class="nfc-core">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2a10 10 0 0 1 0 20M12 6a6 6 0 0 1 0 12M12 10a2 2 0 0 1 0 4"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="scan-info">
+        <h2>Lector NFC</h2>
+        <div id="scan-state-text">Listo para escanear<span class="blink">_</span></div>
+      </div>
+
+      <button id="btn-scan"><span>⬡ Iniciar escaneo</span></button>
+
+      <div id="last-tag">
+        <div class="tag-label">Último tag detectado</div>
+        <div class="tag-uid" id="tag-uid-display">—</div>
+        <div class="tag-meta">
+          <div class="tag-meta-item">
+            <span class="meta-k">Hora</span>
+            <span class="meta-v" id="tag-time-display">—</span>
+          </div>
+          <div class="tag-meta-item">
+            <span class="meta-k">Estado WS</span>
+            <span class="meta-v" id="tag-ws-display">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOG -->
+    <div class="log-section">
+      <div class="log-header">
+        <div class="log-header-left">
+          <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M2 2h12v1H2zm0 3h12v1H2zm0 3h8v1H2zm0 3h6v1H2z"/>
+          </svg>
+          Registro de eventos
+          <span id="log-count">0</span>
+        </div>
+        <button id="btn-clear">LIMPIAR</button>
+      </div>
+      <div id="log">
+        <div class="empty-log" id="empty-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Sin eventos aún
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
